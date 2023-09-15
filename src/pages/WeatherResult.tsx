@@ -25,7 +25,6 @@ const HomePage: React.FC = () => {
     const [data, setData] = useState<WeatherData | null>(null);
     const [cityName, setCityName] = useState<string>('Baku')
     const [errorMesage, setErrorMesage] = useState<string>('')
-    // const [temperatureMeasure, setTemperatureMeasure] = useState<boolean>(true);
     const [value, setValue] = useState('1');
     const temperatureMeasure = useSelector((state: RootState) => state.temperature);
     const dispatch = useDispatch();
@@ -58,7 +57,6 @@ const HomePage: React.FC = () => {
 
     const handleTemperatureChange = useCallback(
         () => {
-            // setTemperatureMeasure(!temperatureMeasure);
             dispatch(toggleTemperatureMeasure());
 
         },
