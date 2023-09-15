@@ -36,7 +36,7 @@ const HomePage: React.FC = () => {
     );
 
     const handleTextFieldKeyDown = useCallback(
-        (event: React.KeyboardEvent<HTMLInputElement>)  => {
+        (event: React.KeyboardEvent<HTMLInputElement>) => {
             // Check if the pressed key is a numeric character (0-9).
             if (/^\d$/.test(event.key)) {
                 event.preventDefault(); // Prevent the input.
@@ -48,7 +48,7 @@ const HomePage: React.FC = () => {
 
     const handleTextFieldChange = useCallback(
         (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-            setCityName(event.target.value.trim());
+            setCityName(event.target.value);
         },
         []
     );
@@ -64,11 +64,10 @@ const HomePage: React.FC = () => {
     const handleSubmit = useCallback(
         (e: React.FormEvent<HTMLFormElement> | null) => {
             e && e.preventDefault()
-
             if (cityName.length > 0) {
                 axios
                     .get<WeatherData>(
-                        `${import.meta.env.VITE_API_URL}?q=${cityName}&appid=${import.meta.env.VITE_API_KEY}&cnt=2&units=${temperatureMeasure}`
+                        `${import.meta.env.VITE_API_URL}?q=${cityName.trim()}&appid=${import.meta.env.VITE_API_KEY}&cnt=2&units=${temperatureMeasure}`
                     )
                     .then(res => {
                         setData(res.data);
@@ -84,7 +83,6 @@ const HomePage: React.FC = () => {
                         }
                     });
             }
-
         },
         [cityName, temperatureMeasure]
     );
