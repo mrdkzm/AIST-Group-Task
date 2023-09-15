@@ -23,7 +23,7 @@ const HomePage: React.FC = () => {
     const [data, setData] = useState<WeatherData | null>(null);
     const [cityName, setCityName] = useState<string>('Baku')
     const [errorMesage, setErrorMesage] = useState<string>('')
-    const [temperatureMeasure, setTemperatureMeasure] = useState<'metric' | 'standart'>('metric');
+    const [temperatureMeasure, setTemperatureMeasure] = useState<boolean>(true);
     const [value, setValue] = useState('1');
     const dispatch = useDispatch();
 
@@ -37,9 +37,8 @@ const HomePage: React.FC = () => {
 
     const handleTextFieldKeyDown = useCallback(
         (event: React.KeyboardEvent<HTMLInputElement>) => {
-            // Check if the pressed key is a numeric character (0-9).
             if (/^\d$/.test(event.key)) {
-                event.preventDefault(); // Prevent the input.
+                event.preventDefault(); 
             }
         },
         []
@@ -55,11 +54,13 @@ const HomePage: React.FC = () => {
 
 
     const handleTemperatureChange = useCallback(
-        (e: React.ChangeEvent<HTMLInputElement>) => {
-            setTemperatureMeasure(e.target.checked ? 'standart' : 'metric');
+        () => {
+            setTemperatureMeasure(!temperatureMeasure);
         },
-        []
+        [temperatureMeasure]
     );
+
+    
 
     const handleSubmit = useCallback(
         (e: React.FormEvent<HTMLFormElement> | null) => {
@@ -67,7 +68,7 @@ const HomePage: React.FC = () => {
             if (cityName.length > 0) {
                 axios
                     .get<WeatherData>(
-                        `${import.meta.env.VITE_API_URL}?q=${cityName.trim()}&appid=${import.meta.env.VITE_API_KEY}&cnt=2&units=${temperatureMeasure}`
+                        `${import.meta.env.VITE_API_URL}?q=${cityName.trim()}&appid=${import.meta.env.VITE_API_KEY}&cnt=2&units=metric`
                     )
                     .then(res => {
                         setData(res.data);
@@ -84,7 +85,7 @@ const HomePage: React.FC = () => {
                     });
             }
         },
-        [cityName, temperatureMeasure]
+        [cityName]
     );
 
 
@@ -114,7 +115,7 @@ const HomePage: React.FC = () => {
 
     useEffect(() => {
         handleSubmit(null);
-    }, [temperatureMeasure]);
+    }, []);
 
 
     useEffect(() => {
@@ -129,6 +130,8 @@ const HomePage: React.FC = () => {
 
     }, [data, dispatch]);
 
+
+    
     return (
         <section>
             <div className='main-container'>
@@ -136,7 +139,7 @@ const HomePage: React.FC = () => {
                     <span className='temp-text'>°C</span>
                     <Switch
                         color="success"
-                        checked={temperatureMeasure === 'standart'}
+                        checked={!temperatureMeasure}
                         onChange={handleTemperatureChange}
 
                     /> <span className='temp-text'> °F </span>
@@ -171,7 +174,7 @@ const HomePage: React.FC = () => {
                                             <div className='info-second'>
                                                 <div className='info-icon-temp-container'>
                                                     <TemperatureIcon className='temperature-icon' />
-                                                    <span className='temperature-result'>{Math.round(item?.main?.temp)}°{temperatureMeasure === 'metric' ? 'C' : 'F'}</span>
+                                                    <span className='temperature-result'>{temperatureMeasure ? Math.round(item?.main?.temp) :  Math.round(item?.main?.temp) + 273}°{temperatureMeasure  ? 'C' : 'F'}</span>
                                                 </div>
 
                                                 {item.weather[0].id >= 800 ?
