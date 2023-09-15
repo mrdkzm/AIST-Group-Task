@@ -118,6 +118,7 @@ const HomePage: React.FC = () => {
     }, []);
 
 
+
     useEffect(() => {
         if (data) {
             data && window.localStorage.setItem('recentSearches', JSON.stringify(data));
@@ -129,7 +130,6 @@ const HomePage: React.FC = () => {
         }
 
     }, [data, dispatch]);
-
 
     
     return (
