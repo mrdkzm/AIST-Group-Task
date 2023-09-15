@@ -15,16 +15,19 @@ import TabPanel from '@mui/lab/TabPanel';
 import { TextField } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import {useSelector, useDispatch } from 'react-redux';
 import { addSearch } from '../features/recentSearchesSlice.js';
 import { WeatherData } from '../types/weatherTypes.ts';
+import { toggleTemperatureMeasure } from '../features/temperatureSlice.tsx';
+import { RootState } from '../store/store';
 
 const HomePage: React.FC = () => {
     const [data, setData] = useState<WeatherData | null>(null);
     const [cityName, setCityName] = useState<string>('Baku')
     const [errorMesage, setErrorMesage] = useState<string>('')
-    const [temperatureMeasure, setTemperatureMeasure] = useState<boolean>(true);
+    // const [temperatureMeasure, setTemperatureMeasure] = useState<boolean>(true);
     const [value, setValue] = useState('1');
+    const temperatureMeasure = useSelector((state: RootState) => state.temperature);
     const dispatch = useDispatch();
 
 
@@ -55,10 +58,13 @@ const HomePage: React.FC = () => {
 
     const handleTemperatureChange = useCallback(
         () => {
-            setTemperatureMeasure(!temperatureMeasure);
+            // setTemperatureMeasure(!temperatureMeasure);
+            dispatch(toggleTemperatureMeasure());
+
         },
-        [temperatureMeasure]
+        [dispatch]
     );
+
 
     
 

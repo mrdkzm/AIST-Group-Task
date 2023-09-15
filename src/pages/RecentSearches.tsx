@@ -12,10 +12,13 @@ import { WeatherData } from '../types/weatherTypes.ts';
 const RecentSearches: React.FC = () => {
     const [resultData, setResultData] = useState<WeatherData[]>([]);
     const existingSearches = useSelector((state: RootState) => state.recentSearches);
+    const temperatureMeasure = useSelector((state: RootState) => state.temperature);
 
     useEffect(() => {
         setResultData(existingSearches)
     }, [existingSearches]);
+
+    
 
     return (
         <section>
@@ -30,7 +33,7 @@ const RecentSearches: React.FC = () => {
                                         <Cloud className='mood-icons' /> : item.list[0].weather[0].id <= 500 ? <Thunder className='mood-icons' /> : <Sunny className='mood-icons' />
                                     }
                                 </div>
-                                <div className='footer-temperature'>{Math.round(item.list[0].main.temp)}°</div>
+                                <div className='footer-temperature'>{temperatureMeasure ? Math.round(item.list[0].main.temp) : Math.round(item.list[0].main.temp) + 273}°</div>
                             </div>
                         )
                     })
