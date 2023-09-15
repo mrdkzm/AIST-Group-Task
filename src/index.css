@@ -4,17 +4,11 @@
   box-sizing: border-box;
 }
 
-.MuiTab-textColorPrimary{
-  color: #D9D9D9  !important;
-  font-family: 'Poppins-Medium' !important;
-}
-.MuiTextField-root{
-  height: 66px !important;
-}
-.Mui-selected {
-  color: #4FFF32 !important;
+body{
+  background-color: #252323;
 }
 
-.MuiTabs-indicator{
-  background: #4FFF32 !important;
+header, section {
+  max-width: 1440px;
+  margin: 0 auto;
 }

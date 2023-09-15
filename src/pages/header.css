@@ -1,0 +1,11 @@
+.logo-container {
+    display: flex;
+}
+
+.logo-header {
+    font-family: 'Poppins-Regular';
+    color: #fff;
+    font-size: 69px;
+    font-weight: 400;
+    line-height: 103px;
+}

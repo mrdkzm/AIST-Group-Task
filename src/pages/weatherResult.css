@@ -1,0 +1,249 @@
+.searching-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: min-content;
+    margin: 44px auto 53px auto;
+}
+
+.searching-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 99%;
+    background-color: transparent;
+    border: none;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
+.main-container {
+    display: flex;
+}
+
+.tab-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.temp-container {
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.MuiSwitch-root {
+    width: 60px;
+    margin: auto 27px;
+}
+
+.MuiButtonBase-root.MuiSwitch-switchBase {
+    color: #fff !important;
+}
+
+.MuiSwitch-track {
+    background-color: #2e7d32 !important;
+}
+
+.temp-text {
+    font-family: 'Poppins-Light';
+    color: #fff;
+    font-size: 30px;
+    line-height: 45px;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 817px;
+    height: 425px;
+    background: linear-gradient(113deg, #AD36CB 32.23%, #333 67.37%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(255, 250, 250, 0.25), 0px 4px 4px 0px rgba(253, 245, 245, 0.25);
+    border-radius: 32px;
+    padding: 35px 28px;
+    margin: 0 auto;
+}
+
+.info-first, .info-third {
+    font-family: 'Poppins-Light';
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+}
+
+.info-second {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.info-icon-temp-container {
+    display: flex;
+    align-items: center;
+}
+
+
+.info-third {
+    padding: 0 10px;
+}
+
+.info-third div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.city {
+    font-size: 30px;
+    line-height: 45px;
+}
+
+
+.date {
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.value {
+    font-family: 'Poppins-Medium';
+}
+
+
+.inline {
+    text-decoration: underline;
+}
+
+.temperature-result {
+    font-family: 'Poppins-Light';
+    font-size: 70px;
+    line-height: 105px;
+    color: #fff;
+    margin: 0 25px;
+}
+
+
+.MuiTab-textColorPrimary {
+    color: #D9D9D9 !important;
+    font-family: 'Poppins-Medium' !important;
+    font-size: 32px !important;
+}
+
+.MuiFormControl-root {
+    background-color: #fff;
+    width: 711px;
+    height: 66px;
+    border-radius: 4px
+}
+
+.MuiInputBase-root {
+    font-family: 'Poppins-Regular' !important;
+    height: 66px !important;
+    background-color: #D9D9D9;  
+    color: #524E4E !important;
+    padding-left: 33px;
+    font-size: 30px !important;
+}
+
+.Mui-selected {
+    color: #4FFF32 !important;
+}
+
+.MuiTabs-indicator {
+    background: #4FFF32 !important;
+}
+
+.error-message {
+    width: 478px;
+    margin: 0 auto;
+}
+
+.mood-icons {
+    width: 60px;
+    height: 35px;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .MuiFormControl-root {
+        width: 600px;
+        height: 66px;
+    }
+
+    .searching-icon {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .MuiFormControl-root {
+        width: 500px;
+    }
+
+    .temperature-result {
+        font-size: 50px;
+        line-height: 75px;
+        margin: 0 17px;
+    }
+
+    .temperature-icon {
+        height: 50px;
+    }
+
+    .responsive-mood-icons {
+        width: 100px;
+
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .MuiTab-textColorPrimary {
+        font-size: 26px !important;
+    }
+
+
+    .MuiFormControl-root {
+        width: 420px;
+    }
+
+
+}
+
+@media screen and (max-width: 468px) {
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .MuiFormControl-root {
+        width: 300px;
+    }
+
+    .info-second {
+        flex-direction: column;
+    }
+}

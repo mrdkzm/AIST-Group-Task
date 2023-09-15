@@ -1,10 +1,17 @@
-import HomePage from './pages/HomePage'
-import './App.css'
+import Header from './pages/Header'
+import WeatherResult from './pages/WeatherResult'
+import RecentSearches from './pages/RecentSearches'
 
-function App() {
-
+const App = () => {
   return (
-    <HomePage />
+    <>
+    <Header />
+    <main>
+      <WeatherResult />
+      <RecentSearches />
+    </main>
+    </>
+
   )
 }
 
